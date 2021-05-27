@@ -18,7 +18,7 @@ public class BoardController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     // forward에 사용할 prefix와 suffix
-    private final String prefix = "/WEB-INF/BoardService/views/";
+    private final String prefix = "/WEB-INF/Board/views/";
     private final String suffix = ".jsp";
 
     // 주소 : 객체를 저장할 Map
