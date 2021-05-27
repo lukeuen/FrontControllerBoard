@@ -42,6 +42,31 @@ public class BoardDAO {
         }
     }
 
+    public BoardDTO getBoardInfo(int idx){
+        BoardDTO boardDTO = null;
+        String sql = "select * from TestBoard where idx=?";
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, idx);
+            rs = pstmt.executeQuery();
+            while(rs.next()) {
+                boardDTO = new BoardDTO();
+                boardDTO.setContent(rs.getString("content"));
+                System.out.println(rs.getString("content"));
+                boardDTO.setDeleted(rs.getString("deleted"));
+                boardDTO.setIdx(rs.getInt("idx"));
+                boardDTO.setTitle(rs.getString("title"));
+                boardDTO.setWriteDate(rs.getString("writeDate"));
+                boardDTO.setWriter(rs.getString("writer"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("getBoardInfo : " + e);
+        } finally { close(); }
+
+        return boardDTO;
+    }
     public List<BoardDTO> getBoardList(){
         List<BoardDTO> list = null;
         String sql = "select * from TestBoard where deleted='n' order by idx desc";
@@ -65,9 +90,8 @@ public class BoardDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("selectOne : " + e);
+            System.out.println("getBoardList : " + e);
         } finally { close(); }
-
 
         return list;
     }

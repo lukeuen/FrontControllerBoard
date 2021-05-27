@@ -22,11 +22,12 @@
         <c:forEach var="item" items="${listitem}">
             <tr>
                 <td>${item.idx}</td>
-                <td><a href="read.jsp?idx=${item.idx}">${item.title}</a></td>
+                <td><a href="/read?idx=${item.idx}">${item.title}</a></td>
                 <td>${item.writeDate}</td>
             </tr>
         </c:forEach>
 
     </table>
+    <button><a href="${pageContext.request.contextPath}/write">글쓰기</a></button>
 </body>
 </html>
