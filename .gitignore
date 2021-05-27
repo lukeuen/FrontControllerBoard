@@ -241,4 +241,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+#META-INF
+context.xml
+
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,java-web,java,windows,macos,eclipse
