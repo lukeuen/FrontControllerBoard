@@ -45,12 +45,12 @@
     </script>
 
     <button><a href="${pageContext.request.contextPath}/list">목록</a></button>
-    <button onclick="modify()">수정</button>
+    <button onclick="save()">저장</button>
 </form>
 </body>
 </html>
 <script>
-    function modify() {
+    function save() {
         event.preventDefault();
         // 현재 입력된 editor의 값 불러오기
         const title     = $('input[name=title]').val();
