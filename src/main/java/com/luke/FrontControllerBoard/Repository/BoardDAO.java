@@ -67,15 +67,31 @@ public class BoardDAO {
 
         return boardDTO;
     }
-    public int addPost(BoardDTO dto){
+    public int editPost(String title,String content,int idx){
+        int row = 0;
+        String sql = "update TESTBOARD set title=?,content=? where idx=?";
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, title);
+            pstmt.setString(2, content);
+            pstmt.setInt(3,idx);
+            row = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("editPost : " + e);
+        } finally { close(); }
+        return row;
+    }
+    public int addPost(String title,String content){
         int row = 0;
         String sql = "insert into TESTBOARD (idx, title, writer, content) VALUES (TestBoard_seq.nextval,?,?,?)";
         try {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
-            pstmt.setString(1, dto.getTitle());
+            pstmt.setString(1, title);
             pstmt.setString(2, "테스트계정");
-            pstmt.setString(3, dto.getContent());
+            pstmt.setString(3, content);
             row = pstmt.executeUpdate();
 
         } catch (SQLException e) {
