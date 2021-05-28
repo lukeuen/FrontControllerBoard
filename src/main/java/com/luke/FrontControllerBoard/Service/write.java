@@ -13,10 +13,9 @@ public class write implements BoardService {
     }
     @Override
     public String doPost(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        BoardDTO boardDTO = new BoardDTO();
-        boardDTO.setTitle(request.getParameter("title"));
-        boardDTO.setContent(request.getParameter("content"));
-        if(BoardDAO.getInstance().addPost(boardDTO) != 0){
+        String title = request.getParameter("title");
+        String content = request.getParameter("content");
+        if(BoardDAO.getInstance().addPost(title,content) != 0){
             return "redirect:list";
         }
         return "redirect:error";
