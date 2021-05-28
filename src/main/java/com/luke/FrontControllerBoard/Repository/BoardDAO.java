@@ -95,8 +95,22 @@ public class BoardDAO {
             row = pstmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("insert : " + e);
+            System.out.println("addPost : " + e);
         } finally { close(); }
+        return row;
+    }
+    public int deletePost(int idx){
+        int row = 0;
+        String sql = "update TESTBOARD set deleted='y' where idx=?";
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, idx);
+            row = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("deletePost : " + e);
+        } finally { close(); }
+
         return row;
     }
     public List<BoardDTO> getBoardList(){
