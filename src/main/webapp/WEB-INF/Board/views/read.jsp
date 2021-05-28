@@ -18,8 +18,8 @@
 <body>
 
 <h2>읽기</h2>
-<button><a href="${pageContext.request.contextPath}/modify?idx=${listinfo.idx}">수정</a></button>
 <button><a href="${pageContext.request.contextPath}/list">목록</a></button>
+<button><a href="${pageContext.request.contextPath}/modify?idx=${listinfo.idx}">수정</a></button>
 <button><a href="${pageContext.request.contextPath}/delete?idx=${listinfo.idx}">삭제</a></button>
 <c:if test="${listinfo != null}">
     <p>글번호 : ${listinfo.idx} </p>

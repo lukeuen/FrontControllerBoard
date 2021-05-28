@@ -38,7 +38,7 @@
         });
     </script>
     <br>
-    <button><a href="${pageContext.request.contextPath}/list">목록</a></button>
+    <button><a href="${pageContext.request.contextPath}/list">취소</a></button>
     <button onclick="save()">저장</button>
 </form>
 
