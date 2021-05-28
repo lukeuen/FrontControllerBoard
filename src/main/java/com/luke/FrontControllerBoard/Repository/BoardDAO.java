@@ -67,6 +67,22 @@ public class BoardDAO {
 
         return boardDTO;
     }
+    public int addPost(BoardDTO dto){
+        int row = 0;
+        String sql = "insert into TESTBOARD (idx, title, writer, content) VALUES (TestBoard_seq.nextval,?,?,?)";
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, dto.getTitle());
+            pstmt.setString(2, "테스트계정");
+            pstmt.setString(3, dto.getContent());
+            row = pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("insert : " + e);
+        } finally { close(); }
+        return row;
+    }
     public List<BoardDTO> getBoardList(){
         List<BoardDTO> list = null;
         String sql = "select * from TestBoard where deleted='n' order by idx desc";

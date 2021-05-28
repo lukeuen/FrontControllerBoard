@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-write
+<form method="post">
+    <input type="text" name="title" placeholder="제목">
+    <input type="text" name="content" placeholder="내용">
+    <input type="submit" value="글쓰기">
+</form>
 </body>
 </html>
