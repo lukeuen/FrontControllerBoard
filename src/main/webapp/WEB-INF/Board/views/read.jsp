@@ -13,12 +13,17 @@
 </head>
 <body>
 
-<h2>내용</h2>
+<h2>읽기</h2>
+<button><a href="${pageContext.request.contextPath}/modify?idx=${listinfo.idx}">수정</a></button>
+<button><a href="${pageContext.request.contextPath}/list">목록</a></button>
 <c:if test="${listinfo != null}">
-    ${listinfo.idx} ,
-    ${listinfo.content},
-    ${listinfo.writeDate},
-    ${listinfo.writer},
+    <p>글번호 : ${listinfo.idx} </p>
+    <p>글쓴이 : ${listinfo.writer}</p>
+    <p>제목 : ${listinfo.title}</p>
+    <p>날짜 : ${listinfo.writeDate}</p>
+    <p>내용 : ${listinfo.content}</p>
 </c:if>
+
+
 </body>
 </html>
